@@ -26,3 +26,11 @@ function members(){A.innerHTML='<div class="wrap">'+shell("members")+'<div class
 function report(){let csv=[["Date","Worker","Work Number","Amount"],...payments.map(p=>[p.date,p.workerName,p.workNumber,p.amount])].map(r=>r.map(x=>'"'+String(x??"").replaceAll('"','""')+'"').join(",")).join("\n");A.innerHTML='<div class="wrap">'+shell("report")+'<div class="card"><h2>Payment report</h2><p>Total: KSh '+payments.reduce((n,p)=>n+Number(p.amount||0),0).toLocaleString()+'</p><button id="down">Download report</button></div></div>';bind();down.onclick=()=>{let a=document.createElement("a");a.href=URL.createObjectURL(new Blob([csv],{type:"text/csv"}));a.download="gorofa-payment-report.csv";a.click()}}
 onAuthStateChanged(auth,u=>u?start():login());
 </script></body></html>
+const firebaseConfig = {
+  apiKey: "AIzaSyDVBZgQp2u5Awb4O6K1SM9gB6Y-0NpB0GA",
+  authDomain: "gorafa-payment.firebaseapp.com",
+  projectId: "gorafa-payment",
+  storageBucket: "gorafa-payment.firebasestorage.app",
+  messagingSenderId: "646663554381",
+  appId: "1:646663554381:web:c01ad62ad06a10d71b6304"
+};
